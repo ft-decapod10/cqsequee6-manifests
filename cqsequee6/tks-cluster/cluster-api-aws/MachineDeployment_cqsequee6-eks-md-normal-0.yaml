@@ -1,0 +1,28 @@
+# Source: cluster-api-aws/templates/machine-deployment.yaml
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: MachineDeployment
+metadata:
+  name: cqsequee6-eks-md-normal-0
+  namespace: cqsequee6
+  annotations:
+    cluster.x-k8s.io/cluster-api-autoscaler-node-group-min-size: "1"
+    cluster.x-k8s.io/cluster-api-autoscaler-node-group-max-size: "5"
+spec:
+  clusterName: cqsequee6
+  replicas: 1
+  template:
+    spec:
+      bootstrap:
+        configRef:
+          apiVersion: bootstrap.cluster.x-k8s.io/v1beta1
+          kind: EKSConfigTemplate
+          name: cqsequee6-eks-md-normal
+      clusterName: cqsequee6
+      failureDomain: ap-northeast-2a
+      infrastructureRef:
+        apiVersion: infrastructure.cluster.x-k8s.io/v1beta1
+        kind: AWSMachineTemplate
+        name: cqsequee6-md-normal
+      version: v1.22.5
+  selector:
+        matchLabels: null

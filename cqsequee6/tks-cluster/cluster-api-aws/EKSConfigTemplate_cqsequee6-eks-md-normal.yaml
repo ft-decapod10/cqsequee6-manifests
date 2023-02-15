@@ -1,0 +1,8 @@
+# Source: cluster-api-aws/templates/machine-deployment.yaml
+apiVersion: bootstrap.cluster.x-k8s.io/v1beta1
+kind: EKSConfigTemplate
+metadata:
+  name: cqsequee6-eks-md-normal
+  namespace: cqsequee6
+spec:
+  template: {}
